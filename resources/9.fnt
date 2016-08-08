@@ -1,0 +1,15 @@
+#
+#Mon Aug 08 00:40:15 ADT 2016
+style=bold italic
+alphabet=
+color=\#ffffff
+shadow.y=1
+family=Monospaced
+shadow.x=0
+shadow.color=\#000000
+gradient.offset=10
+shadow.blur=2
+chars=all
+stroke.size=0
+antialias=true
+size=18

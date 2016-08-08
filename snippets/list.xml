@@ -69,4 +69,16 @@
         <blocks/>
         <events/>
     </snippet>
+    <snippet attachedevent="false" class="scripts.Design_8_8_SceneTransition" classname="scripts.Design_8_8_SceneTransition" desc="" description="" design="true" drawOrder="0" id="8" name="Scene_Transition" oid="-1" package="scripts" shared="false" type="scene">
+        <scene default="" defaultValue="" desc="" dropdown="" fullname="Next_Scene" hidden="false" id="1" name="_NextScene" order="0"/>
+        <actor default="" defaultValue="" desc="" dropdown="" fullname="Player" hidden="false" id="2" name="_Player" order="1"/>
+        <blocks/>
+        <events>
+            <event displayName="Updating" enabled="true" id="1" name="step" order="1" repeats="true"/>
+        </events>
+    </snippet>
+    <snippet attachedevent="true" class="scripts.SceneEvents_1" classname="scripts.SceneEvents_1" desc="Scene Specific Events" description="Scene Specific Events" design="true" drawOrder="0" id="9" name="SceneEvents_1" oid="-1" package="scripts." sceneid="1" shared="false" type="scene">
+        <blocks/>
+        <events/>
+    </snippet>
 </pack>
