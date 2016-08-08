@@ -1,0 +1,16 @@
+#
+#Mon Aug 08 11:23:41 ADT 2016
+style=plain
+alphabet=
+color=\#c0c0c0
+shadow.y=0
+family=SilkRemington-SBold.ttf
+shadow.x=0
+shadow.color=\#000000
+gradient.offset=0
+shadow.blur=0
+chars=all
+gradient.color=\#ffffff
+stroke.size=0
+antialias=true
+size=16

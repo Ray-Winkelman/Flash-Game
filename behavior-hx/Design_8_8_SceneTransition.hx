@@ -70,18 +70,34 @@ import com.stencyl.graphics.shaders.BloomShader;
 
 
 
-class SceneEvents_1 extends SceneScript
+class Design_8_8_SceneTransition extends SceneScript
 {
+	public var _NextScene:Scene;
+	public var _Player:Actor;
 	
 	
 	public function new(dummy:Int, dummy2:Engine)
 	{
 		super();
+		nameMap.set("Next_Scene", "_NextScene");
+		nameMap.set("Player", "_Player");
 		
 	}
 	
 	override public function init()
 	{
+		
+		/* ======================== When Updating ========================= */
+		addWhenUpdatedListener(null, function(elapsedTime:Float, list:Array<Dynamic>):Void
+		{
+			if(wrapper.enabled)
+			{
+				if((_Player.getX() >= getScreenWidth()))
+				{
+					switchScene(_NextScene.getID(), createFadeOut(1, Utils.getColorRGB(0,0,0)), createFadeIn(1, Utils.getColorRGB(0,0,0)));
+				}
+			}
+		});
 		
 	}
 	
