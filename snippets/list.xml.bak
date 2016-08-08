@@ -89,4 +89,8 @@
             <event displayName="Drawing" enabled="true" id="1" name="draw" order="1" repeats="true"/>
         </events>
     </snippet>
+    <snippet actorid="12" attachedevent="true" class="scripts.ActorEvents_12" classname="scripts.ActorEvents_12" desc="Actor Specific Events" description="Actor Specific Events" design="true" drawOrder="0" id="11" name="ActorEvents_12" oid="-1" package="scripts." shared="false" type="actor">
+        <blocks/>
+        <events/>
+    </snippet>
 </pack>

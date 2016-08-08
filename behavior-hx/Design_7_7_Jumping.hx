@@ -69,18 +69,88 @@ import com.stencyl.graphics.shaders.BloomShader;
 
 
 
-class ActorEvents_5 extends ActorScript
+class Design_7_7_Jumping extends ActorScript
 {
+	public var _JumpKey:String;
+	public var _JumpSound:Sound;
+	public var _JumpForce:Float;
+	public var _JumpLeftAnimation:String;
+	public var _JumpRightAnimation:String;
 	
 	
 	public function new(dummy:Int, actor:Actor, dummy2:Engine)
 	{
 		super(actor);
+		nameMap.set("Actor", "actor");
+		nameMap.set("Jump Key", "_JumpKey");
+		nameMap.set("Jump Sound", "_JumpSound");
+		nameMap.set("Jump Force", "_JumpForce");
+		_JumpForce = 40.0;
+		nameMap.set("Jump Left Animation", "_JumpLeftAnimation");
+		nameMap.set("Jump Right Animation", "_JumpRightAnimation");
 		
 	}
 	
 	override public function init()
 	{
+		
+		/* ======================== When Creating ========================= */
+		actor.setActorValue("On Ground?", false);
+		
+		/* ======================== When Updating ========================= */
+		addWhenUpdatedListener(null, function(elapsedTime:Float, list:Array<Dynamic>):Void
+		{
+			if(wrapper.enabled)
+			{
+				/* Jump */
+				if((isKeyPressed(_JumpKey) && (actor.getActorValue("On Ground?") == true)))
+				{
+					playSound(_JumpSound);
+					actor.applyImpulse(0, -1, _JumpForce);
+					/* Give the Actor a chance to get off the ground */
+					runLater(1000 * 0.075, function(timeTask:TimedTask):Void
+					{
+						if(actor.isAlive())
+						{
+							actor.setActorValue("On Ground?", false);
+						}
+					}, actor);
+				}
+				/* Switch to jumping animations */
+				if((actor.getActorValue("On Ground?") == false))
+				{
+					if((actor.getActorValue("Facing Right?") == true))
+					{
+						actor.setAnimation("" + _JumpRightAnimation);
+						actor.setCurrentFrame(Std.int(0));
+					}
+					else
+					{
+						actor.setAnimation("" + _JumpLeftAnimation);
+						actor.setCurrentFrame(Std.int(0));
+					}
+				}
+			}
+		});
+		
+		/* ======================== Something Else ======================== */
+		addCollisionListener(actor, function(event:Collision, list:Array<Dynamic>):Void
+		{
+			if(wrapper.enabled)
+			{
+				/* Had the Actor collided with the ground? */
+				if(event.thisCollidedWithTile)
+				{
+					for(point in event.points)
+					{
+						if((Math.abs(Math.round(Engine.toPixelUnits(point.normalY))) > 0.1))
+						{
+							actor.setActorValue("On Ground?", true);
+						}
+					}
+				}
+			}
+		});
 		
 	}
 	

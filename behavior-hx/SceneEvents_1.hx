@@ -70,7 +70,7 @@ import com.stencyl.graphics.shaders.BloomShader;
 
 
 
-class SceneEvents_0 extends SceneScript
+class SceneEvents_1 extends SceneScript
 {
 	
 	
@@ -82,6 +82,18 @@ class SceneEvents_0 extends SceneScript
 	
 	override public function init()
 	{
+		
+		/* ========================= When Drawing ========================= */
+		addWhenDrawingListener(null, function(g:G, x:Float, y:Float, list:Array<Dynamic>):Void
+		{
+			if(wrapper.enabled)
+			{
+				getActor(1).anchorToScreen();
+				g.setFont(getFont(11));
+				fadeInForAllSounds(2);
+				g.drawString("" + "You are a cyborg.", (getScreenWidth() / 2), (getScreenHeight() / 2));
+			}
+		});
 		
 	}
 	
